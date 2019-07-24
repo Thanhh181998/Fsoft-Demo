@@ -22,7 +22,7 @@
         <b-form-input 
           type="password"
           id="input-2"
-          v-model="form.name"
+          v-model="form.password"
           required
           placeholder="Enter you password"
         ></b-form-input>
@@ -41,7 +41,7 @@
       return {
         form: {
           email: '',
-          name: ''
+          password: ''
         },
         show: true
       }
@@ -49,13 +49,17 @@
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
-        alert(JSON.stringify(this.form))
+        if (this.form.email !== 'admin@fsoft.com.vn' || this.form.password !== '12345678') {
+          alert("The user or password not exist!");
+        } else {
+          alert("Login successfull!");
+        }
       },
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
         this.form.email = ''
-        this.form.name = ''
+        this.form.password = ''
       }
     }
   }
