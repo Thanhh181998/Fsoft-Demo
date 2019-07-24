@@ -2,7 +2,12 @@
   <div class="d-flex justify-content-center">
    <div class="home">
 
-    
+   <!-- <div class="message">
+     <p v-if="loginSuccess"> Login successfull </p>
+     <p v-else> The username and password is not exist </p>
+   </div> -->
+
+
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
@@ -41,21 +46,23 @@
       return {
         form: {
           email: '',
-          password: ''
+          password: '',
+          loginSuccess: false
         },
         show: true
       }
     },
     methods: {
-      onSubmit(evt) {
+      onSubmit: function(evt) {
         evt.preventDefault()
         if (this.form.email !== 'admin@fsoft.com.vn' || this.form.password !== '12345678') {
           alert("The user or password not exist!");
         } else {
           alert("Login successfull!");
+          
         }
       },
-      onReset(evt) {
+      onReset: function(evt) {
         evt.preventDefault()
         // Reset our form values
         this.form.email = ''
@@ -72,6 +79,7 @@
   border-radius: 10px;
   width: 30%;
   padding: 5px;
+  padding-top: 10px;
 }
 
 </style>
