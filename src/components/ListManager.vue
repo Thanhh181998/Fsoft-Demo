@@ -17,7 +17,7 @@
     >List Manager</router-link>
     <hr />
     <table class="table table-bordered">
-      <thead>
+      <thead class="thead-dark">
         <tr>
           <th>ID</th>
           <th>Name</th>

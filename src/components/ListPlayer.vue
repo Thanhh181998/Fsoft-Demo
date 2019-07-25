@@ -18,7 +18,7 @@
     >List Manager</router-link>
     <hr />
     <table class="table table-bordered">
-      <thead>
+      <thead class="thead-dark">
         <tr>
           <th>ID</th>
           <th>Name</th>
@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import { router } from 'router';
+// import { router } from 'router'
 
 export default {
   name: 'List',

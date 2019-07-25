@@ -17,12 +17,12 @@
     >List Manager</router-link>
     <hr />
     <table class="table table-bordered">
-      <thead>
+      <thead class="thead-dark">
         <tr>
-          <th>ID</th>
-          <th>Team</th>
-          <th>City</th>
-          <th>Nation</th>
+          <th scope="col">ID</th>
+          <th scope="col">Team</th>
+          <th scope="col">City</th>
+          <th scope="col">Nation</th>
         </tr>
       </thead>
       <tbody v-for="(item, index) in items" v-bind:key="item">
@@ -57,4 +57,9 @@ export default {
 tr > th {
   text-align: center !important;
 }
+
+.btn {
+  padding: 10px;
+}
+
 </style>

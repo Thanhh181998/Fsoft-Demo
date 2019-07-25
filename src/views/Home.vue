@@ -56,7 +56,7 @@ export default {
       ) {
         alert('The username or password not exist!')
       } else {
-        //alert('Login successfull!')
+        // alert('Login successfull!')
         // router.push('/team/list')
         router.push('/team/list')
       }
