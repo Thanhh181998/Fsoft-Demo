@@ -5,6 +5,7 @@ import Home from '@/views/Home'
 import ListTeam from '@/components/ListTeam'
 import ListPlayer from '@/components/ListPlayer'
 import ListManager from '@/components/ListManager'
+// import Edit from '@/component/Edit'
 Vue.use(Router)
 
 export default new Router({
