@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div >
+        <b-button id="show-btn"  variant="success">Create New Player</b-button>
+        <b-modal>
+
+        </b-modal>
+    </div>
     <div class="tab">
       <router-link
         :to="{ name: 'listTeam' }"
