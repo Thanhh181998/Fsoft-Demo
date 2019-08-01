@@ -1,9 +1,7 @@
 <template>
+<center>
   <div class="d-flex justify-content-center">
     <div class="home">
-      <!-- <div class="message">
-          <p> {{ message }} </p>
-      </div>-->
       <b-form @submit="onSubmit" @reset="onReset" v-if="show" @change="checkForInput">
         <div class="message-box">
           <p v-if="check">The username and password not exist</p>
@@ -27,6 +25,7 @@
       </b-form>
     </div>
   </div>
+</center>
 </template>
 <script>
 import router from '@/router'

@@ -1,65 +1,75 @@
 <template>
-  <div id="app">
-    <div >
-        <b-button id="show-btn" @click="OpenForm()" variant="success">Create New Player</b-button>
-        <b-modal id="addModal" hide-footer>
-          <template slot="modal-title" >
-            Add new player
-          </template>
-          <div class="d-block text-center">
-            <p>Name: <input v-model="item.name" type="text"/> </p>
-            <p v-if="check" class="error">Please enter the name of player</P>
-            <p>Team: <input v-model="item.team" type="text"/> </p>
-            <p>Nation: <input v-model="item.nation" type="text"/></p>
-          </div>
-          <b-button class="mt-3" block @click="addNewPlayer()">Add New Player</b-button>
-        </b-modal>
-    </div>
+  <div id="app" class="all">
     <div class="tab">
       <router-link
         :to="{ name: 'listTeam' }"
         tag="button"
         class="btn glyphicon glyphicon-plus"
-      >List Team</router-link>
+      > Team</router-link>
       <router-link
         :to="{ name: 'listPlayer' }"
         tag="button"
         class="btn glyphicon glyphicon-plus"
-      >List Player</router-link>
+      > Player</router-link>
       <router-link
         :to="{ name: 'listManager' }"
         tag="button"
         class="btn glyphicon glyphicon-plus"
-      >List Manager</router-link>
+      > Manager</router-link>
     </div>
-    <b-table :items="items" striped bordered :fields="fields" class="table table-bordered"
-    id="my-table"
-    :per-page="perPage"
-    :current-page="currentPage"
-      small>
-      <template slot="actions" slot-scope="row">
-        <b-button @click="showModal(row.item.id)" variant="success">Edit</b-button>
-        <b-modal :id="'index' + row.item.id" hide-footer>
-          <template slot="modal-title">
-            Edit Player Profile
-          </template>
-          <div class="d-block text-center">
-            <p>Name: <input v-model.lazy="row.item.name"/> </p>
-            <p>Team: <input v-model.lazy="row.item.team"/> </p>
-            <p>Nation: <input v-model.lazy="row.item.nation"/> </p>
-          </div>
-          <b-button class="mt-3" block @click="closeModal(row.item.id)">Edit Profile</b-button>
-        </b-modal>
-        <b-button id="show-btn" @click="deleteModal(row.item.id)" variant="danger">Delete</b-button>
-      </template>
-    </b-table>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
+    <div class="content">
+      <div class="head-content">
+        Wellcome to my team
+      </div>
+      <br/>
+      <div >
+          <b-button id="show-btn" @click="OpenForm()" variant="success">Create New Player</b-button>
+          <b-modal id="addModal" hide-footer>
+            <template slot="modal-title" >
+              Add new player
+            </template>
+            <div class="d-block text-center">
+              <p>Name: <input v-model="item.name" type="text"/> </p>
+              <p v-if="check" class="error">Please enter the name of player</P>
+              <p>Team: <input v-model="item.team" type="text"/> </p>
+              <p>Nation: <input v-model="item.nation" type="text"/></p>
+            </div>
+            <b-button class="mt-3" block @click="addNewPlayer()">Add New Player</b-button>
+          </b-modal>
+      </div>
+      <br />
+      <b-table :items="items" striped bordered :fields="fields" class="table table-bordered"
+      id="my-table"
       :per-page="perPage"
-      aria-controls="my-table"
-    ></b-pagination>
-    <p class="mt-3">Current Page: {{ currentPage }}</p>
+      :current-page="currentPage"
+        small>
+        <template slot="actions" slot-scope="row">
+          <b-button @click="showModal(row.item.id)" variant="success">Edit</b-button>
+          <b-modal :id="'index' + row.item.id" hide-footer>
+            <template slot="modal-title">
+              Edit Player Profile
+            </template>
+            <div class="d-block text-center">
+              <p>Name: <input v-model.lazy="row.item.name"/> </p>
+              <p>Team: <input v-model.lazy="row.item.team"/> </p>
+              <p>Nation: <input v-model.lazy="row.item.nation"/> </p>
+            </div>
+            <b-button class="mt-3" block @click="closeModal(row.item.id)">Edit Profile</b-button>
+          </b-modal>
+          <b-button id="show-btn" @click="deleteModal(row.item.id)" variant="danger">Delete</b-button>
+        </template>
+      </b-table>
+      <div class="pagination">
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-table"
+          class="paze"
+        ></b-pagination>
+      </div>
+      <p class="mt-3">Current Page: {{ currentPage }}</p>
+      </div>
   </div>
 </template>
 <script>
@@ -102,7 +112,10 @@ export default {
     closeModal (index) {
       this.$bvModal.hide('index' + index)
     },
-    deleteModal (index) {
+    deleteModal (id) {
+      var index = this.items.findIndex(x => x.id === id)
+      console.log(index)
+      console.log(id)
       if (confirm('Do you really want to delete?')) {
         this.items.splice(index, 1)
       }
@@ -145,10 +158,7 @@ tr > th {
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  width: 350px;
-  border-top-right-radius: 15px;
-
+  background-color:pink;
 }
 
 /* Style the buttons inside the tab */
@@ -165,11 +175,7 @@ tr > th {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
-}
-
-.tab button.active {
-  background-color: #ccc;
+  background-color:pink;
 }
 
 /* Style the tab content */
@@ -183,4 +189,24 @@ tr > th {
 .error {
   color: red;
 }
+
+.all {
+  display: flex;
+}
+
+.tab {
+  width: 10%;
+  height: auto;
+  display: initial
+}
+
+.content {
+  width: 90%;
+}
+
+.head-content {
+  height: 100px;
+  background-color: aquamarine;
+}
+
 </style>
